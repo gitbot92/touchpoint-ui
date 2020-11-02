@@ -173,3 +173,16 @@
 .MainTableRow .InfoTabContainer .nav-tabs a.active:hover{
 	color: 	var(--navColor);
 }
+
+/* Wrap Text */
+
+.MainTableRow .wrapText .wrapTextCell {
+	white-space: normal !important;
+	height: fit-content !important;
+
+}
+
+.MainTableRow .wrapText {
+	height: fit-content !important;
+
+}

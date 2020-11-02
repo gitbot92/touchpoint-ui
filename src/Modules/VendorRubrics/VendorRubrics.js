@@ -39,7 +39,7 @@ export default function VendorRubrics(){
 	const dataHeaders = [
 		{headerID: 'id',displayName:'ID', width: 100, required: true},
 		{headerID: 'project', displayName: 'Project', width: 100, options:[2,100,200], onEdit:(e)=>false},
-		{headerID: 'projectName', displayName:'Project Name', width: 220},
+		{headerID: 'projectName', wrapText:true, displayName:'Project Name', width: 220},
 		{headerID: 'status', displayName: 'Status', width: 200, required: true, styling: statusStyle, onEdit: ()=>true, options: ['Complete', 'Pending Approval', 'In Progress']},
 		{headerID: 'due', displayName: 'Due', width: 200, type: 'date', onEdit: ()=>{
 			return new Promise(resolve=>{

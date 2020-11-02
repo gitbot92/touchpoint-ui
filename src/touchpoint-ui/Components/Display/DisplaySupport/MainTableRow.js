@@ -13,6 +13,8 @@ export default function MainTableRow(props) {
 	? ' active '
 	: ''
 	
+	let wrapTextClass = ""
+
 	function rowClickHandler(){
 		if(!props.noActive){
 			props.dataset.selectRecord( props.dataRow[props.dataset.primaryKey])
@@ -28,7 +30,8 @@ export default function MainTableRow(props) {
 	
 	const rowContent = props.dataHeaders.map((hdr, i) => {
 		if(hdr.visible || hdr.required){
-			
+			let wrapCellClass = hdr.wrapText ? 'wrapTextCell': ''
+
 			function cellClickHandler(){
 				if(hdr.onClick && !hdr.locked && !props.locked){
 					hdr.onClick({
@@ -58,6 +61,10 @@ export default function MainTableRow(props) {
 				
 			} else {
 				cellContent = cellText
+				if(hdr.wrapText)
+				{
+					wrapTextClass = 'wrapText flexY'
+				}
 			}
 			
 			
@@ -78,7 +85,7 @@ export default function MainTableRow(props) {
 				return(<span 
 					key = {hdr.headerID + props.rowKey} 
 					style = {{width: hdr.width + 'px'}}
-					className = {cellClass}
+					className = {cellClass + ' '+ wrapCellClass}
 					title={cellText}
 					onClick = {cellClickHandler}
 				>
@@ -143,7 +150,7 @@ export default function MainTableRow(props) {
 			className={'MainTableRow ' + expandedClass} 
 			onClick = {rowClickHandler}
 		>
-			<div className={'topRow' + activeClass}>
+			<div className={'topRow' + activeClass + ' ' + wrapTextClass}>
 				{expandIcon}
 				{rowContent}
 			</div>
